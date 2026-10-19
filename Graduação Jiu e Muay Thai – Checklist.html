@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Graduação 14/11 – Checklist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F2F3F1; --surface:#FFFFFF; --ink:#16191C; --muted:#5E656B; --line:#D9DCDA;
+  --accent:#C4281C; --accent-ink:#FFFFFF; --done:#2F7D4F; --tag-levar:#1F3FA8; --tag-fazer:#8A5A00;
+  --f-head:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101214; --surface:#1A1D20; --ink:#F0F1F0; --muted:#9AA1A6; --line:#2C3135;
+    --accent:#EF5A4D; --accent-ink:#101214; --done:#5CC18A; --tag-levar:#8FA8FF; --tag-fazer:#E8B34F;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101214; --surface:#1A1D20; --ink:#F0F1F0; --muted:#9AA1A6; --line:#2C3135;
+  --accent:#EF5A4D; --accent-ink:#101214; --done:#5CC18A; --tag-levar:#8FA8FF; --tag-fazer:#E8B34F;
+}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 150px);color-scheme:light dark}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.4;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+.wrap{max-width:640px;margin:0 auto}
+.title-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+h1{font-family:var(--f-head);font-weight:700;font-size:30px;line-height:1;margin:0;letter-spacing:.2px}
+.countdown{font-family:var(--f-head);font-weight:600;font-size:18px;color:var(--accent);white-space:nowrap}
+.sub{color:var(--muted);font-size:14px;margin:4px 0 10px}
+.bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:var(--done);transition:width .25s}
+.bar-label{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-top:6px}
+.tabs{display:flex;gap:8px;margin-top:10px}
+.tab,.chip{font:inherit;font-weight:600;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer}
+.tab[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{padding:12px 16px 120px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:6px}
+.chip{white-space:nowrap;font-size:15px;padding:6px 14px;min-height:36px}
+section.group{margin-top:18px}
+.group-head{display:flex;align-items:center;gap:10px;margin:0 0 8px;padding-left:10px;border-left:6px solid var(--accent)}
+.group-head h2{font-family:var(--f-head);font-weight:700;font-size:24px;margin:0;flex:1;line-height:1.1}
+.group-head span{font-size:14px;color:var(--muted);font-weight:600}
+.group-head.complete{border-left-color:var(--done)}
+ul{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+li.item{padding:12px 14px;border-bottom:1px solid var(--line)}
+li.item:last-child{border-bottom:0}
+li.item .row{display:flex;align-items:flex-start;gap:12px}
+li.item label{display:flex;align-items:flex-start;gap:12px;flex:1;cursor:pointer;min-width:0}
+input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;width:26px;height:26px;margin:1px 0 0;border:2px solid var(--muted);border-radius:6px;background:transparent;display:grid;place-content:center;cursor:pointer}
+input[type=checkbox]:checked{background:var(--done);border-color:var(--done)}
+input[type=checkbox]:checked::after{content:"";width:7px;height:13px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+input[type=checkbox]:focus-visible,.tab:focus-visible,.chip:focus-visible,button:focus-visible,select:focus-visible,input[type=text]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.txt{flex:1;min-width:0}
+.txt b{font-weight:500;display:block;overflow-wrap:anywhere}
+.txt small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+li.item.done .txt b{text-decoration:line-through;color:var(--muted)}
+ul.subs{list-style:none;margin:8px 0 0 38px;padding:0;background:none;border:0;border-radius:0;overflow:visible}
+ul.subs li.sub{display:flex;align-items:flex-start;gap:8px;padding:4px 0;border-bottom:0}
+ul.subs label{display:flex;align-items:flex-start;gap:8px;cursor:pointer;min-width:0}
+ul.subs input[type=checkbox]{width:20px;height:20px;margin-top:1px}
+ul.subs .txt b{font-weight:400;font-size:15px}
+.tag{flex:none;font-size:13px;font-weight:600;border:1.5px solid currentColor;border-radius:6px;padding:1px 7px;margin-top:2px}
+.tag.levar{color:var(--tag-levar)}
+.tag.fazer{color:var(--tag-fazer)}
+.del{flex:none;border:0;background:transparent;color:var(--muted);font-size:22px;line-height:1;padding:2px 8px;cursor:pointer;border-radius:6px}
+.empty{color:var(--muted);text-align:center;padding:30px 10px}
+/* cronograma */
+ol.prog{list-style:none;margin:0;padding:0;counter-reset:p}
+ol.prog li{counter-increment:p;position:relative;display:flex;gap:12px;align-items:flex-start;padding:12px 14px 12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
+ol.prog li::before{content:counter(p);flex:none;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-head);font-weight:700;font-size:17px;display:grid;place-content:center}
+ol.prog li.sep{border-color:var(--accent)}
+ol.prog .t{flex:1}
+ol.prog .t b{font-weight:600;display:block}
+ol.prog .t small{color:var(--muted);font-size:14px}
+.badge{flex:none;font-size:13px;font-weight:600;background:var(--accent);color:var(--accent-ink);border-radius:6px;padding:2px 8px;margin-top:2px}
+.prog-note{color:var(--muted);font-size:14px;margin:0 0 12px}
+/* add */
+.add{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.add h3{font-family:var(--f-head);font-size:22px;margin:0 0 10px}
+.add .row{display:flex;gap:8px;flex-wrap:wrap}
+.add input[type=text],.add select{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;min-height:44px;flex:1 1 140px;min-width:0}
+.btn{font:inherit;font-weight:600;border:0;border-radius:8px;padding:10px 16px;min-height:44px;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--muted);border:1.5px solid var(--line)}
+.foot{display:flex;justify-content:center;margin-top:20px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="title-row">
+      <h1>Graduação Jiu e Muay Thai</h1>
+      <div class="countdown" id="countdown"></div>
+    </div>
+    <p class="sub">Sábado, 14/11/2026</p>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="pb"><i id="pfill"></i></div>
+    <div class="bar-label"><span id="plabel"></span><span id="ppct"></span></div>
+    <div class="tabs" role="group" aria-label="Seção">
+      <button class="tab" id="tab-list" aria-pressed="true">Checklist</button>
+      <button class="tab" id="tab-prog" aria-pressed="false">Cronograma</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div id="view-list">
+      <div class="chips" role="group" aria-label="Filtro">
+        <button class="chip" data-f="all" aria-pressed="true">Tudo</button>
+        <button class="chip" data-f="falta" aria-pressed="false">Falta</button>
+        <button class="chip" data-f="levar" aria-pressed="false">Levar</button>
+        <button class="chip" data-f="fazer" aria-pressed="false">Fazer</button>
+      </div>
+      <div id="groups"></div>
+
+      <div class="add">
+        <h3>Adicionar item</h3>
+        <div class="row">
+          <input type="text" id="new-text" placeholder="Ex.: extintor, fita crepe" aria-label="Novo item">
+          <select id="new-group" aria-label="Seção"></select>
+          <select id="new-type" aria-label="Tipo">
+            <option value="levar">Levar</option>
+            <option value="fazer">Fazer</option>
+          </select>
+          <button class="btn" id="new-add">Adicionar</button>
+        </div>
+      </div>
+      <div class="foot"><button class="btn ghost" id="reset">Desmarcar tudo</button></div>
+    </div>
+
+    <div id="view-prog" hidden>
+      <p class="prog-note">Ordem do evento. “Foto” marca os momentos em que o fotógrafo precisa estar posicionado.</p>
+      <ol class="prog" id="prog"></ol>
+    </div>
+  </div>
+</main>
+
+<script>
+(function(){
+  var EVENT = new Date(2026, 10, 14); // 14/11/2026
+  var GROUPS = [
+    {id:"unif", name:"Uniforme da mesa de honra"},
+    {id:"graduacao", name:"Graduação (graus, faixas e listas)"},
+    {id:"estrutura", name:"Estrutura e equipamentos"},
+    {id:"luta", name:"Campeonato e lutas"},
+    {id:"sorteio", name:"Sorteio"},
+    {id:"bar", name:"Cantina, gelo e pagamentos"},
+    {id:"limpeza", name:"Limpeza"},
+    {id:"pessoas", name:"Equipe, patrocínio e vendas"}
+  ];
+  var ITEMS = [
+    // uniforme
+    {g:"unif",t:"levar",x:"Mongkon"},
+    {g:"unif",t:"levar",x:"Kimono"},
+    {g:"unif",t:"levar",x:"Faixa preta"},
+    {g:"unif",t:"levar",x:"Praijed preto"},
+    // graduacao
+    {g:"graduacao",t:"levar",x:"Graus já cortados e contados",s:["Descobrir quantos graus precisa cortar","Achar as pranchetas que colam o grau cortado"]},
+    {g:"graduacao",t:"levar",x:"Praijeds",s:["Descobrir quantos praijeds precisa fazer","Colocar os praijeds feitos em uma caixa"]},
+    {g:"graduacao",t:"levar",x:"Certificados",s:["Mandar fazer os certificados"]},
+    {g:"graduacao",t:"fazer",x:"Lista de graduados do Jiu"},
+    {g:"graduacao",t:"fazer",x:"Lista de graduados do Thai"},
+    {g:"graduacao",t:"fazer",x:"Cronograma do dia impresso"},
+    // estrutura
+    {g:"estrutura",t:"levar",x:"Tatames",s:["Descobrir a quantidade certa de tatames","Ver se precisa lavar os tatames"]},
+    {g:"estrutura",t:"levar",x:"Ringue de luta"},
+    {g:"estrutura",t:"levar",x:"Caixa de som"},
+    {g:"estrutura",t:"levar",x:"Extensões"},
+    {g:"estrutura",t:"levar",x:"Notebooks",s:["Falar sobre o 2º notebook"]},
+    {g:"estrutura",t:"levar",x:"TVs",s:["Falar sobre a 2ª TV"]},
+    {g:"estrutura",t:"levar",x:"Painel para os patrocinadores"},
+    {g:"estrutura",t:"levar",x:"Caixas organizadoras",n:"Para itens pequenos: praijeds dos alunos, mongkons, faixas coloridas, etc."},
+    // luta
+    {g:"luta",t:"fazer",x:"Definir as equipes"},
+    {g:"luta",t:"fazer",x:"Software do campeonato pronto"},
+    {g:"luta",t:"fazer",x:"Ver quem vai querer lutar",n:"Para casar as lutas (boxe e thai) e montar as chaves (jiu)"},
+    {g:"luta",t:"fazer",x:"Chaves de luta"},
+    {g:"luta",t:"fazer",x:"Lutas casadas"},
+    {g:"luta",t:"fazer",x:"Confirmar árbitros"},
+    {g:"luta",t:"levar",x:"Apitos"},
+    {g:"luta",t:"levar",x:"Braçadeira de árbitro"},
+    {g:"luta",t:"levar",x:"Faixas coloridas",n:"Usadas nas lutas internas"},
+    // sorteio
+    {g:"sorteio",t:"levar",x:"Urna do sorteio",s:["Fazer a urna"]},
+    {g:"sorteio",t:"levar",x:"Fichas do sorteio",s:["Pedir as fichas"]},
+    {g:"sorteio",t:"levar",x:"Prêmios do sorteio",s:["Pensar nos prêmios (ideia: 1 mês de aula grátis)"]},
+    // bar
+    {g:"bar",t:"levar",x:"Máquina de cartão",n:"Levar 2, se possível"},
+    {g:"bar",t:"fazer",x:"Ligar a geladeira um dia antes",n:"Sexta, 13/11"},
+    {g:"bar",t:"levar",x:"Geladeira"},
+    {g:"bar",t:"levar",x:"Gelo",s:["Descobrir quantos quilos de gelo"]},
+    {g:"bar",t:"levar",x:"Bebidas",s:["Descobrir quantas bebidas"]},
+    {g:"bar",t:"levar",x:"Comidas",s:["Definir quem vai trazer as comidas"]},
+    {g:"bar",t:"levar",x:"Fichas de bebidas e comidas"},
+    // limpeza
+    {g:"limpeza",t:"levar",x:"Papel higiênico",s:["Descobrir quantos pacotes de papel higiênico"]},
+    {g:"limpeza",t:"levar",x:"Desinfetante"},
+    {g:"limpeza",t:"levar",x:"Sacos de lixo",s:["Descobrir quantos sacos de lixo"]},
+    // pessoas
+    {g:"pessoas",t:"fazer",x:"Contratar fotógrafo"},
+    {g:"pessoas",t:"fazer",x:"Pagamento dos ajudantes",n:"Separar o valor combinado"},
+    {g:"pessoas",t:"fazer",x:"Controlar a venda de ingressos",n:"Anotar o total vendido: serve para atrair patrocinadores e dimensionar vendedores nos próximos eventos"},
+    {g:"pessoas",t:"fazer",x:"Definir quem vai fazer o que no dia"}
+  ];
+  var PROG = [
+    {x:"Entrada"},
+    {x:"Discurso 1 (Jiu)"},
+    {x:"Entrega de grau baby",f:1},
+    {x:"Entrega de grau mirim",f:1},
+    {x:"Troca de grau infantil",f:1},
+    {x:"Troca de grau adulto",f:1},
+    {x:"Troca de faixa"},
+    {x:"Discurso 2 (Thai)",sep:1},
+    {x:"Troca de praijed infantil",f:1},
+    {x:"Troca de praijed adulto",f:1},
+    {x:"Pausa e preparação para as lutas internas",n:"Sorteio durante a pausa"},
+    {x:"Lutas de Jiu e Thai simultâneas",n:"Tatames e ringue funcionando ao mesmo tempo"}
+  ];
+  var KEY = "grad-1411-v1";
+  var state = {done:{}, custom:[]};
+  try{ var raw = localStorage.getItem(KEY); if(raw){ var p = JSON.parse(raw); if(p && p.done) state = p; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var all = ITEMS.map(function(it,i){
+    var id = "b"+i;
+    return {id:id,g:it.g,t:it.t,x:it.x,n:it.n,subs:(it.s||[]).map(function(s,j){ return {id:id+"-s"+j,x:s}; })};
+  });
+  function allItems(){
+    return all.concat((state.custom||[]).map(function(c){ return {id:c.id,g:c.g,t:c.t,x:c.x,n:c.n,custom:true,subs:[]}; }));
+  }
+
+  var filter = "all";
+  var $ = function(id){ return document.getElementById(id); };
+
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+
+  function countUnit(i){ return 1 + i.subs.length; }
+  function doneUnit(i){
+    var n = (state.done[i.id]?1:0);
+    i.subs.forEach(function(s){ if(state.done[s.id]) n++; });
+    return n;
+  }
+  function subsHtml(i){
+    if(!i.subs.length) return "";
+    return '<ul class="subs">'+i.subs.map(function(s){
+      var d = !!state.done[s.id];
+      return '<li class="sub item'+(d?' done':'')+'"><label><input type="checkbox" data-id="'+s.id+'"'+(d?' checked':'')+'><span class="txt"><b>'+esc(s.x)+'</b></span></label></li>';
+    }).join("")+'</ul>';
+  }
+
+  function render(){
+    var items = allItems();
+    var total = items.reduce(function(n,i){return n+countUnit(i);},0);
+    var ok = items.reduce(function(n,i){return n+doneUnit(i);},0);
+    var pct = total ? Math.round(ok/total*100) : 0;
+    $("pfill").style.width = pct+"%";
+    $("pb").setAttribute("aria-valuenow", pct);
+    $("plabel").textContent = ok+" de "+total+" itens prontos";
+    $("ppct").textContent = pct+"%";
+
+    var html = "";
+    GROUPS.forEach(function(g){
+      var gi = items.filter(function(i){return i.g===g.id;});
+      var gTotal = gi.reduce(function(n,i){return n+countUnit(i);},0);
+      var gd = gi.reduce(function(n,i){return n+doneUnit(i);},0);
+      var vis = gi.filter(function(i){
+        if(filter==="all") return true;
+        if(filter==="falta") return doneUnit(i) < countUnit(i);
+        return i.t===filter;
+      });
+      if(!vis.length) return;
+      html += '<section class="group"><div class="group-head'+(gd===gTotal&&gTotal?' complete':'')+'"><h2>'+esc(g.name)+'</h2><span>'+gd+'/'+gTotal+'</span></div><ul>';
+      vis.forEach(function(i){
+        var d = !!state.done[i.id];
+        html += '<li class="item'+(d?' done':'')+'"><div class="row"><label><input type="checkbox" data-id="'+i.id+'"'+(d?' checked':'')+'><span class="txt"><b>'+esc(i.x)+'</b>'+(i.n?'<small>'+esc(i.n)+'</small>':'')+'</span></label><span class="tag '+i.t+'">'+(i.t==="levar"?"Levar":"Fazer")+'</span>'+(i.custom?'<button class="del" data-del="'+i.id+'" aria-label="Remover '+esc(i.x)+'">×</button>':'')+'</div>'+subsHtml(i)+'</li>';
+      });
+      html += '</ul></section>';
+    });
+    if(!html) html = '<p class="empty">'+(filter==="falta"?"Tudo pronto. Bom evento!":"Nenhum item neste filtro.")+'</p>';
+    $("groups").innerHTML = html;
+  }
+
+  function renderProg(){
+    $("prog").innerHTML = PROG.map(function(p){
+      return '<li'+(p.sep?' class="sep"':'')+'><span class="t"><b>'+esc(p.x)+'</b>'+(p.n?'<small>'+esc(p.n)+'</small>':'')+'</span>'+(p.f?'<span class="badge">Foto</span>':'')+'</li>';
+    }).join("");
+  }
+
+  function countdown(){
+    var now = new Date(); now.setHours(0,0,0,0);
+    var d = Math.round((EVENT - now)/86400000);
+    $("countdown").textContent = d>1 ? "Faltam "+d+" dias" : d===1 ? "É amanhã" : d===0 ? "É hoje" : "Evento realizado";
+  }
+
+  $("groups").addEventListener("change",function(e){
+    var id = e.target.getAttribute("data-id");
+    if(!id) return;
+    if(e.target.checked) state.done[id]=true; else delete state.done[id];
+    save(); render();
+  });
+  $("groups").addEventListener("click",function(e){
+    var id = e.target.getAttribute("data-del");
+    if(!id) return;
+    state.custom = state.custom.filter(function(c){return c.id!==id;});
+    delete state.done[id];
+    save(); render();
+  });
+  document.querySelectorAll(".chip").forEach(function(c){
+    c.addEventListener("click",function(){
+      filter = c.getAttribute("data-f");
+      document.querySelectorAll(".chip").forEach(function(o){ o.setAttribute("aria-pressed", o===c ? "true":"false"); });
+      render();
+    });
+  });
+  function setTab(list){
+    $("view-list").hidden = !list; $("view-prog").hidden = list;
+    $("tab-list").setAttribute("aria-pressed", list?"true":"false");
+    $("tab-prog").setAttribute("aria-pressed", list?"false":"true");
+    window.scrollTo(0,0);
+  }
+  $("tab-list").addEventListener("click",function(){setTab(true);});
+  $("tab-prog").addEventListener("click",function(){setTab(false);});
+
+  $("new-group").innerHTML = GROUPS.map(function(g){return '<option value="'+g.id+'">'+esc(g.name)+'</option>';}).join("");
+  function add(){
+    var v = $("new-text").value.trim();
+    if(!v) return;
+    state.custom.push({id:"c"+Date.now(), g:$("new-group").value, t:$("new-type").value, x:v});
+    $("new-text").value = "";
+    save(); render();
+  }
+  $("new-add").addEventListener("click",add);
+  $("new-text").addEventListener("keydown",function(e){ if(e.key==="Enter") add(); });
+  $("reset").addEventListener("click",function(){
+    if(confirm("Desmarcar todos os itens?")){ state.done = {}; save(); render(); }
+  });
+
+  countdown(); renderProg(); render();
+})();
+</script>
+</body>
+</html>
